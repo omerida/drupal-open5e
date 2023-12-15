@@ -1,0 +1,24 @@
+version: '3'
+services:
+  apache:
+    build:
+      dockerfile: docker/apache
+    volumes:
+      - ./src/:/var/www/src
+#    extra_hosts:
+#      - "drupal5e.local:127.0.0.1"
+  mysql:
+      container_name: d9_mysql
+      image: mysql:8
+      command: --max_allowed_packet=32505856
+      environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: d5e_srd
+        MYSQL_USER: d5e_swd
+        MYSQL_PASSWORD: n23dnFFF2j
+      expose:
+        - "3306"
+      security_opt:
+        - seccomp:unconfined
+      volumes:
+        - ./docker/data/mysql:/var/lib/mysql
