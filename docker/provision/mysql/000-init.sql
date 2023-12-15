@@ -1,0 +1,1 @@
+GRANT ALL ON d5e_srd.* TO 'd5e_swd'@'%' IDENTIFIED BY 'n23dnFFF2j';

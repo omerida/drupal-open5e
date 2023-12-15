@@ -1,0 +1,9 @@
+name: Open 5E Importers
+type: module
+description: Fetch data for import with feeds
+package: Custom
+version: 1.0
+core_version_requirement: ^10
+dependencies:
+  - drupal:feeds
+  - drupal:feeds_ex

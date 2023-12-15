@@ -1,0 +1,14 @@
+open5e_import.main:
+  path: '/open5e/import/main'
+  defaults:
+    _controller: '\Drupal\open5e_import\Controller\ImporterController::main'
+  requirements:
+    _permission: 'administer feeds'
+open5e_import.spells:
+  path: '/open5e/import/spells'
+  defaults:
+    _controller: '\Drupal\open5e_import\Controller\ImporterController::spells'
+  options:
+    no_cache: 'TRUE'
+  requirements:
+    _permission: 'administer feeds'

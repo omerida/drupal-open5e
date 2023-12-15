@@ -1,2 +1,47 @@
 docker/data
-src/public
+#docker/provision/ssl.*
+open5e/
+.idea/
+
+# This file contains default .gitignore rules. To use it, copy it to .gitignore,
+# and it will cause files like your settings.php and user-uploaded files to be
+# excluded from Git version control. This is a common strategy to avoid
+# accidentally including private information in public repositories and patch
+# files.
+#
+# Because .gitignore can be specific to your site, this file has a different
+# name; updating Drupal core will not override your custom .gitignore file.
+
+# Ignore core when managing all of a project's dependencies with Composer
+# including Drupal core.
+#src/web/core/
+
+# Ignore dependencies that are managed with Composer.
+# Generally you should only ignore the root vendor directory. It's important
+# that core/assets/vendor and any other vendor directories within contrib or
+# custom module, theme, etc., are not ignored unless you purposely do so.
+src/vendor/
+
+# Ignore configuration files that may contain sensitive information.
+src/web/sites*/settings*.php
+src/web/sites*/services*.yml
+
+# Ignore paths that contain user-generated content.
+src/web/sites*/files
+src/web/sites*/private
+
+# Ignore multi-site test environment.
+src/web/sitessimpletest
+
+# If you prefer to store your .gitignore file in the src/web/sites folder, comment
+# or delete the previous settings and uncomment the following ones, instead.
+
+# Ignore configuration files that may contain sensitive information.
+# */settings*.php
+
+# Ignore paths that contain user-generated content.
+# */files
+# */private
+
+# Ignore multi-site test environment.
+# simpletest

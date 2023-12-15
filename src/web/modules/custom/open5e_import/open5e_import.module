@@ -1,0 +1,33 @@
+<?php
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function open5e_import_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.open5e_import':
+      return <<<EOM
+<h2>Open 5E Importers for Drupal</h2>
+
+<p>This module fetches json data from Open5E to a local directory, for import with the feeds module.</p>
+
+EOM;
+  }
+}
+
+/**
+ * Implements hook_theme()
+ */
+function open5e_import_theme($existing, $type, $theme, $path)
+{
+  return [
+    'open5e_main' => [
+      'variables' => [
+        'spellURL' => null,
+      ],
+    ]
+  ];
+}
+

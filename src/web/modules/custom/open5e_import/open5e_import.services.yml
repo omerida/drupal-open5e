@@ -1,0 +1,4 @@
+services:
+  open5e_import.spells_service:
+    class: \Drupal\open5e_import\Service\SpellsImporter
+    arguments: ['@http_client', '@file_system']
