@@ -27,6 +27,11 @@ function open5e_import_theme($existing, $type, $theme, $path)
       'variables' => [
         'spellURL' => null,
       ],
+    ],
+    'open5e_spells' => [
+      'variables' => [
+        'pages' => null,
+      ],
     ]
   ];
 }

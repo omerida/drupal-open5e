@@ -17,10 +17,11 @@ class ImporterController
   public function spells(): array
   {
     $spells = \Drupal::service('open5e_import.spells_service');
-    $spells->fetch();
+    $pages = $spells->fetch();
 
     return [
       '#theme' => 'open5e_spells',
+      '#pages' => $pages,
     ];
   }
 }

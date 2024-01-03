@@ -25,7 +25,7 @@ abstract class AbstractImporter
    * @throws GuzzleException
    * @throws \JsonException
    */
-  public function fetch(): bool
+  public function fetch(): false|int
   {
     $targetURL = $this->baseURL . $this->getPathRoot() . '?limit=250';
     $page = 0;
@@ -36,7 +36,7 @@ abstract class AbstractImporter
         FileSystemInterface::CREATE_DIRECTORY | FileSystemInterface::MODIFY_PERMISSIONS
     )) {
       // @todo Log an error.
-      return FALSE;
+      return false;
     }
 
     while ($nextPage) {
@@ -44,9 +44,9 @@ abstract class AbstractImporter
       $response = $this->httpClient->get($targetURL);
       $body = json_decode($response->getBody(), false, flags: JSON_THROW_ON_ERROR);
 
-
       if ($body->results) {
-        $this->fileSystem->saveData(json_encode($body), $this->generateFileName($page));
+        $results = $this->prepareResults($body);
+        $this->fileSystem->saveData(json_encode($results), $this->generateFileName($page));
       }
 
       if ($body->next) {
@@ -57,11 +57,18 @@ abstract class AbstractImporter
       }
     }
 
-    return true;
+    return $page;
   }
 
   private function generateFileName(int $page): string
   {
     return $this->targetDir . '/' . $this->getPathRoot() . '-' . $page . '.json';
+  }
+
+  protected function prepareResults(\stdClass $body): \stdClass
+  {
+    // TODO: implement in subclasses if you want to change the json
+    // before saving it.
+    return $body;
   }
 }
