@@ -46,7 +46,11 @@ abstract class AbstractImporter
 
       if ($body->results) {
         $results = $this->prepareResults($body);
-        $this->fileSystem->saveData(json_encode($results), $this->generateFileName($page));
+        $this->fileSystem->saveData(
+          data: json_encode($results),
+          destination: $this->generateFileName($page),
+          replace: FileSystemInterface::EXISTS_REPLACE
+        );
       }
 
       if ($body->next) {
